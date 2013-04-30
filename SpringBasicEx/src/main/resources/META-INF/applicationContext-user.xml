@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<bean id="localPropertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>classpath:encryption.properties</value>
+		</property>
+	</bean>
+	<bean id="jasyptStringDigester" class="com.ex.springbasicex.TestBean">
+		<property name="algorithm">
+			<value>${digest.algorithm}</value>
+		</property>
+		<property name="saltSizeBytes" value="${salt.bytes.length}" />
+	</bean>
+</beans>
